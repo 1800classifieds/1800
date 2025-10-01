@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { PlusIcon, UsersIcon } from "@/components/icons"
+import { PlusIcon, UserIcon } from "@/components/icons"
 import { useRouter } from "next/navigation"
 
 interface AdminUser {
@@ -192,7 +192,7 @@ export function AdminRolesManager({ admins: initialAdmins }: AdminRolesManagerPr
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                  <UsersIcon className="h-6 w-6 text-purple-600" />
+                  <UserIcon className="h-6 w-6 text-purple-600" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
@@ -237,7 +237,7 @@ export function AdminRolesManager({ admins: initialAdmins }: AdminRolesManagerPr
 
         {admins.length === 0 && !isAdding && (
           <Card className="p-12 text-center border-2 border-dashed">
-            <UsersIcon className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+            <UserIcon className="h-16 w-16 text-gray-300 mx-auto mb-4" />
             <p className="text-gray-500 mb-4">No admin users yet</p>
             <Button onClick={() => setIsAdding(true)} className="bg-blue-600 hover:bg-blue-700">
               <PlusIcon className="h-4 w-4 mr-2" />

@@ -1,7 +1,7 @@
 import { getAdminUser, isMasterAdmin } from "@/lib/db/admin"
 import { query } from "@/lib/db/mysql"
 import { Card } from "@/components/ui/card"
-import { TagIcon, UsersIcon, BriefcaseIcon, ClockIcon } from "@/components/icons"
+import { TagIcon, UserIcon, BriefcaseIcon, ClockIcon } from "@/components/icons"
 import { redirect } from "next/navigation"
 
 export default async function AdminDashboardPage() {
@@ -68,7 +68,7 @@ export default async function AdminDashboardPage() {
         <Card className="p-6 border-2">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
-              <UsersIcon className="h-6 w-6 text-purple-600" />
+              <UserIcon className="h-6 w-6 text-purple-600" />
             </div>
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-1">{totalUsers}</h3>
@@ -100,7 +100,7 @@ export default async function AdminDashboardPage() {
             </a>
             <a href="/admin/users" className="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors">
               <div className="flex items-center gap-3">
-                <UsersIcon className="h-5 w-5 text-gray-600" />
+                <UserIcon className="h-5 w-5 text-gray-600" />
                 <div>
                   <p className="font-semibold text-gray-900">Manage Users</p>
                   <p className="text-sm text-gray-600">View and manage user accounts</p>

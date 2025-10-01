@@ -371,3 +371,38 @@ export const MailIcon = ({ className, ...props }: IconProps) => (
     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
   </svg>
 )
+
+export const LogOutIcon = ({ className, ...props }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+    className={className}
+    {...props}
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-10V5" />
+  </svg>
+)
+
+
+export const SkyscraperAd = ({ className, ...props }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <rect x="3" y="3" width="6" height="18" rx="1" />
+    <rect x="9" y="6" width="12" height="15" rx="1" />
+    <path d="M9 3v3h12" />
+  </svg>
+)

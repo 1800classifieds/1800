@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { HomeIcon, TagIcon, UsersIcon, BriefcaseIcon, ClockIcon } from "@/components/icons"
+import { HomeIcon, TagIcon, UserIcon, BriefcaseIcon, ClockIcon } from "@/components/icons"
 import { cn } from "@/lib/utils"
 import type { AdminUser } from "@/lib/db/admin"
 
@@ -35,13 +35,13 @@ export function AdminSidebar({ adminUser }: AdminSidebarProps) {
     {
       href: "/admin/users",
       label: "Manage Users",
-      icon: UsersIcon,
+      icon: UserIcon,
       permission: "manage_users" as const,
     },
     {
       href: "/admin/admins",
       label: "Manage Admins",
-      icon: UsersIcon,
+      icon: UserIcon,
       permission: "manage_admins" as const,
     },
     {
