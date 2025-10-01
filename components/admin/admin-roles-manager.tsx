@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -11,9 +10,20 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { PlusIcon, UsersIcon } from "@/components/icons"
-import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
-import type { AdminUser } from "@/lib/supabase/admin"
+
+interface AdminUser {
+  id: number
+  email: string
+  role: "super_admin" | "admin" | "moderator"
+  permissions: {
+    manage_listings: boolean
+    manage_categories: boolean
+    manage_users: boolean
+    manage_admins: boolean
+  }
+  is_active: boolean
+}
 
 interface AdminRolesManagerProps {
   admins: AdminUser[]
@@ -34,26 +44,20 @@ export function AdminRolesManager({ admins: initialAdmins }: AdminRolesManagerPr
     },
   })
 
+  // ✅ Create new admin via API
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const supabase = createClient()
 
-    // In a real app, you'd create the user account first, then add to admin_users
-    const { data, error } = await supabase
-      .from("admin_users")
-      .insert([
-        {
-          email: formData.email,
-          role: formData.role,
-          permissions: formData.permissions,
-          is_active: true,
-        },
-      ])
-      .select()
-      .single()
+    const res = await fetch("/api/admins", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
 
-    if (!error && data) {
-      setAdmins([...admins, data])
+    const result = await res.json()
+
+    if (result.success) {
+      setAdmins([...admins, { id: result.id, ...formData, is_active: true }])
       setIsAdding(false)
       setFormData({
         email: "",
@@ -66,17 +70,26 @@ export function AdminRolesManager({ admins: initialAdmins }: AdminRolesManagerPr
         },
       })
       router.refresh()
+    } else {
+      console.error(result.error)
     }
   }
 
-  const handleToggleActive = async (adminId: string, currentStatus: boolean) => {
-    const supabase = createClient()
+  // ✅ Toggle admin active/inactive via API
+  const handleToggleActive = async (adminId: number, currentStatus: boolean) => {
+    const res = await fetch(`/api/admins/${adminId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ is_active: !currentStatus }),
+    })
 
-    const { error } = await supabase.from("admin_users").update({ is_active: !currentStatus }).eq("id", adminId)
+    const result = await res.json()
 
-    if (!error) {
+    if (result.success) {
       setAdmins(admins.map((a) => (a.id === adminId ? { ...a, is_active: !currentStatus } : a)))
       router.refresh()
+    } else {
+      console.error(result.error)
     }
   }
 
@@ -136,69 +149,23 @@ export function AdminRolesManager({ admins: initialAdmins }: AdminRolesManagerPr
             <div className="space-y-3">
               <Label>Permissions</Label>
               <div className="space-y-3 bg-white p-4 rounded-lg border-2">
-                <div className="flex items-center gap-3">
-                  <Checkbox
-                    id="manage_listings"
-                    checked={formData.permissions.manage_listings}
-                    onCheckedChange={(checked) =>
-                      setFormData({
-                        ...formData,
-                        permissions: { ...formData.permissions, manage_listings: checked as boolean },
-                      })
-                    }
-                  />
-                  <Label htmlFor="manage_listings" className="cursor-pointer font-normal">
-                    Manage Listings
-                  </Label>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Checkbox
-                    id="manage_categories"
-                    checked={formData.permissions.manage_categories}
-                    onCheckedChange={(checked) =>
-                      setFormData({
-                        ...formData,
-                        permissions: { ...formData.permissions, manage_categories: checked as boolean },
-                      })
-                    }
-                  />
-                  <Label htmlFor="manage_categories" className="cursor-pointer font-normal">
-                    Manage Categories
-                  </Label>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Checkbox
-                    id="manage_users"
-                    checked={formData.permissions.manage_users}
-                    onCheckedChange={(checked) =>
-                      setFormData({
-                        ...formData,
-                        permissions: { ...formData.permissions, manage_users: checked as boolean },
-                      })
-                    }
-                  />
-                  <Label htmlFor="manage_users" className="cursor-pointer font-normal">
-                    Manage Users
-                  </Label>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Checkbox
-                    id="manage_admins"
-                    checked={formData.permissions.manage_admins}
-                    onCheckedChange={(checked) =>
-                      setFormData({
-                        ...formData,
-                        permissions: { ...formData.permissions, manage_admins: checked as boolean },
-                      })
-                    }
-                  />
-                  <Label htmlFor="manage_admins" className="cursor-pointer font-normal">
-                    Manage Admins
-                  </Label>
-                </div>
+                {Object.keys(formData.permissions).map((key) => (
+                  <div key={key} className="flex items-center gap-3">
+                    <Checkbox
+                      id={key}
+                      checked={(formData.permissions as any)[key]}
+                      onCheckedChange={(checked) =>
+                        setFormData({
+                          ...formData,
+                          permissions: { ...formData.permissions, [key]: checked as boolean },
+                        })
+                      }
+                    />
+                    <Label htmlFor={key} className="cursor-pointer font-normal capitalize">
+                      {key.replace("_", " ")}
+                    </Label>
+                  </div>
+                ))}
               </div>
             </div>
 
