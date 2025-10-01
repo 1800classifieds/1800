@@ -1,4 +1,4 @@
-# 1800 Classifieds Landing Page
+# 1800 Landing Page
 
 A modern, responsive classifieds landing page built with Next.js 14, React 19, and Tailwind CSS 4.
 

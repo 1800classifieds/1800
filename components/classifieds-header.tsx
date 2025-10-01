@@ -11,7 +11,7 @@ export function ClassifiedsHeader() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center group">
-            <div className="text-2xl font-bold text-white">1800 Classifieds</div>
+            <div className="text-2xl font-bold text-white">1800</div>
           </Link>
 
           <div className="flex-1 max-w-2xl mx-6 hidden md:block">

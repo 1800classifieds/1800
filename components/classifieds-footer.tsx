@@ -9,7 +9,7 @@ export function ClassifiedsFooter() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="mb-4">
-                <h3 className="text-2xl font-bold">1800 Classifieds</h3>
+                <h3 className="text-2xl font-bold">1800</h3>
               </div>
               <p className="text-white/90 text-sm leading-relaxed mb-4">
                 Trusted platform for buying and selling. Post your ad for free and reach thousands of buyers.
@@ -80,7 +80,7 @@ export function ClassifiedsFooter() {
           </div>
 
           <div className="border-t border-white/20 pt-6 text-center text-sm text-white/90">
-            <p>&copy; {new Date().getFullYear()} 1800 Classifieds Limited. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} 1800 Limited. All rights reserved.</p>
           </div>
         </div>
       </div>

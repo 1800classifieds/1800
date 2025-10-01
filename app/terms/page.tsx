@@ -24,7 +24,7 @@ export default function TermsPage() {
                 <section>
                   <h2 className="text-2xl font-bold mb-4">1. Acceptance of Terms</h2>
                   <p className="leading-relaxed text-foreground">
-                    By accessing and using 1800 Classifieds ("the Platform"), you accept and agree to be bound by these
+                    By accessing and using 1800 ("the Platform"), you accept and agree to be bound by these
                     Terms and Conditions. If you do not agree to these terms, please do not use our services.
                   </p>
                 </section>
@@ -70,7 +70,7 @@ export default function TermsPage() {
                 <section>
                   <h2 className="text-2xl font-bold mb-4">5. Transaction Responsibility</h2>
                   <p className="leading-relaxed text-foreground">
-                    1800 Classifieds is a platform that connects buyers and sellers. We are not a party to any
+                    1800 is a platform that connects buyers and sellers. We are not a party to any
                     transaction between users. All transactions are conducted directly between buyers and sellers. We do
                     not guarantee the quality, safety, or legality of items advertised, the truth or accuracy of
                     listings, or the ability of sellers to complete sales.
@@ -89,7 +89,7 @@ export default function TermsPage() {
                 <section>
                   <h2 className="text-2xl font-bold mb-4">7. Intellectual Property</h2>
                   <p className="leading-relaxed text-foreground">
-                    The 1800 Classifieds name, logo, and all related marks are trademarks of 1800 Classifieds Limited.
+                    The 1800 name, logo, and all related marks are trademarks of 1800 Limited.
                     All content on the Platform, including text, graphics, logos, and software, is the property of 1800
                     Classifieds or its content suppliers and is protected by copyright laws.
                   </p>
@@ -98,7 +98,7 @@ export default function TermsPage() {
                 <section>
                   <h2 className="text-2xl font-bold mb-4">8. Limitation of Liability</h2>
                   <p className="leading-relaxed text-foreground">
-                    1800 Classifieds shall not be liable for any indirect, incidental, special, consequential, or
+                    1800 shall not be liable for any indirect, incidental, special, consequential, or
                     punitive damages resulting from your use of the Platform. We provide the service "as is" without
                     warranties of any kind, either express or implied.
                   </p>

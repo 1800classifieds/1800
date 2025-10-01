@@ -12,7 +12,7 @@ const quicksand = Quicksand({
 })
 
 export const metadata: Metadata = {
-  title: "1800 Classifieds - Buy & Sell Anything",
+  title: "1800 - Buy & Sell Anything",
   description:
     "Trusted classifieds platform. Post free ads for vehicles, property, electronics, jobs, and more. Buy and sell locally with millions of users.",
   generator: "v0.app",

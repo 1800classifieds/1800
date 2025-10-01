@@ -141,7 +141,7 @@ export default function PrivacyPage() {
                 <br />
                 Email: privacy@1800classifieds.in
                 <br />
-                Address: 1800 Classifieds Limited, Mumbai, India
+                Address: 1800 Limited, Mumbai, India
               </p>
             </section>
           </div>

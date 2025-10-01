@@ -21,7 +21,7 @@ export function AdminHeader({ adminUser }: AdminHeaderProps) {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="px-8 py-4 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">1800 Classifieds Admin</h1>
+          <h1 className="text-2xl font-bold text-gray-900">1800 Admin</h1>
           <p className="text-sm text-gray-500">Manage your platform</p>
         </div>
 
