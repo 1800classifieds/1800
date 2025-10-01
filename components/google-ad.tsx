@@ -58,3 +58,14 @@ export function SquareAd({ className }: { className?: string }) {
 export function InFeedAd({ className }: { className?: string }) {
   return <GoogleAd slot="4567890123" format="fluid" className={className} style={{ minHeight: "100px" }} />
 }
+
+export function SkyscraperAd({ className }: { className?: string }) {
+  return (
+    <GoogleAd
+      slot="5678901234"
+      format="vertical"
+      className={className}
+      style={{ minHeight: "600px", minWidth: "160px" }}
+    />
+  )
+}
